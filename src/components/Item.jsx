@@ -1,14 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import MenuItem from '@mui/material/MenuItem';
-import Flags from 'country-flag-icons/react/3x2'
+import React from "react";
+import PropTypes from "prop-types";
+import MenuItem from "@mui/material/MenuItem";
+import { Flag } from "./Flag";
 
 class Item extends React.PureComponent {
   render() {
     const ref = React.createRef();
     const {
-      name, iso2, dialCode, localization,
-      itemRef, native, className = '', ...restProps
+      name,
+      iso2,
+      dialCode,
+      localization,
+      itemRef,
+      native,
+      className = "",
+      ...restProps
     } = this.props;
 
     if (native) {
@@ -20,14 +26,15 @@ class Item extends React.PureComponent {
           value={iso2}
           {...restProps}
         >
-          {localization || name}
-          {' '}
-          {`+${dialCode}`}
+          {localization || name} {`+${dialCode}`}
         </option>
       );
     }
 
-    const FlagComponent = Flags[iso2.toUpperCase()];
+    const FlagComponent = () =>
+      Flag({
+        country: selectedCountry.iso2.toUpperCase(),
+      });
 
     return (
       <MenuItem
@@ -43,9 +50,7 @@ class Item extends React.PureComponent {
           </div>
         )}
 
-        <span className="country-name">
-          {localization || name}
-        </span>
+        <span className="country-name">{localization || name}</span>
 
         <span className="dial-code">{`+${dialCode}`}</span>
       </MenuItem>

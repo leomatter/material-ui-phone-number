@@ -11,11 +11,11 @@ module.exports = merge(common, {
       'Access-Control-Allow-Headers': 'content-type,authorization,accept',
     },
     port: 8181,
-    inline: true,
     historyApiFallback: true,
-    clientLogLevel: 'none',
     open: true,
-    contentBase: 'dist',
+    static : {
+      directory : "dist"
+    },
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
