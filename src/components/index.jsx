@@ -692,6 +692,7 @@ class MaterialUiPhoneNumber extends React.Component {
   };
 
   handleInputKeyDown = (e) => {
+    e.preventDefault();
     const { keys, onEnterKeyPress, onKeyDown } = this.props;
     if (e.which === keys.ENTER && onEnterKeyPress) {
       onEnterKeyPress(e);
@@ -937,6 +938,7 @@ class MaterialUiPhoneNumber extends React.Component {
         onFocus={this.handleInputFocus}
         onBlur={this.handleInputBlur}
         onKeyDown={this.handleInputKeyDown}
+        onEnterKeyPress={(e) => e.preventDefault()}
         type="tel"
         InputProps={{
           ...dropdownProps,
