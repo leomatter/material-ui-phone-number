@@ -33,7 +33,7 @@ class Item extends React.PureComponent {
 
     const FlagComponent = () =>
       Flag({
-        country: selectedCountry.iso2.toUpperCase(),
+        country: iso2.toUpperCase(),
       });
 
     return (
